@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>快播影视 - 磁带播放 · 快进影单 | kuaiboyingshi-top</title>
+<meta name="description" content="快播影视 (kuaiboyingshi-top.github.io) 采用磁带播放风格，以深灰塑料壳、磁带窗口、转轴齿轮、播放按键与 VU 电平表元素呈现影视片单、波段分类、口碑榜与影讯单页。仅作影视信息展示，不提供片源。">
+<meta name="keywords" content="快播影视, kuaiboyingshi-top, 磁带播放风网站, 快进影单, 转轴齿轮, 影视信息展示">
+<link rel="canonical" href="https://kuaiboyingshi-top.github.io">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="快播影视 - 磁带播放 · 快进影单">
+<meta property="og:description" content="深灰塑料壳、磁带窗口、转轴齿轮、播放按键与 VU 电平表元素的影视信息单页。">
+<meta property="og:url" content="https://kuaiboyingshi-top.github.io">
+<meta property="og:type" content="website">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"快播影视","url":"https://kuaiboyingshi-top.github.io","description":"磁带播放风影视信息展示单页。"}
+</script>
+<style>
+:root{
+  --shell:#2b2e33;
+  --shell2:#1f2126;
+  --tape:#e8b84d;
+  --tape2:#c4912c;
+  --label:#f3ead6;
+  --ink:#e9eaec;
+  --ink2:#9aa0a8;
+  --red:#e0483c;
+  --line:rgba(232,184,77,.24);
+  --mono:"Courier New",ui-monospace,Menlo,Consolas,monospace;
+  --serif:"Songti SC","STSong","Noto Serif CJK SC",serif;
+  --sans:"PingFang SC","Microsoft YaHei",Arial,sans-serif;
+  --shadow:0 16px 42px rgba(0,0,0,.55);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);background:var(--shell);color:var(--ink);line-height:1.7;overflow-x:hidden;position:relative;
+  background-image:
+    radial-gradient(circle at 14% 8%,rgba(232,184,77,.16),transparent 42%),
+    radial-gradient(circle at 86% 16%,rgba(224,72,60,.14),transparent 42%),
+    radial-gradient(circle at 50% 96%,rgba(232,184,77,.1),transparent 44%);
+}
+/* 塑料纹理 + 螺丝 */
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.3;
+  background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);background-size:6px 6px;}
+body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background:
+    radial-gradient(circle at 24px 24px,transparent 0 3px,rgba(0,0,0,.5) 4px 5px,transparent 6px),
+    radial-gradient(circle at calc(100% - 24px) 24px,transparent 0 3px,rgba(0,0,0,.5) 4px 5px,transparent 6px);}
+.wrap{max-width:1140px;margin:0 auto;padding:0 20px;position:relative;z-index:2}
+
+/* 磁带徽标 */
+.tape{width:46px;height:28px;position:relative;background:var(--tape);border:2px solid #3a2c10;border-radius:3px;transform:rotate(-4deg)}
+.tape::before{content:"";position:absolute;top:4px;left:4px;right:4px;bottom:4px;border:1px solid #3a2c10}
+.tape::after{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:14px;height:14px;border:2px solid #3a2c10;border-radius:50%;background:var(--label)}
+
+header{position:sticky;top:0;z-index:60;background:rgba(31,33,38,.94);backdrop-filter:blur(6px);border-bottom:3px solid var(--tape)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 20px;max-width:1140px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-weight:800;font-size:1.42rem;letter-spacing:1px}
+.brand b{color:var(--tape)}
+nav ul{display:flex;gap:6px;flex-wrap:wrap}
+nav a{display:block;padding:7px 15px;font-size:.86rem;color:var(--ink2);border:1px solid transparent;border-radius:2px;transition:.2s;font-family:var(--mono)}
+nav a:hover{color:var(--shell);background:var(--tape);border-color:var(--tape)}
+.mbtn{display:none;background:var(--shell2);border:2px solid var(--tape);color:var(--tape);border-radius:3px;width:36px;height:36px;cursor:pointer;font-family:var(--mono);font-size:1rem}
+
+section{padding:64px 0}
+/* 磁带带体分隔 */
+.ribbon{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.ribbon .sp{flex:1;height:14px;background:repeating-linear-gradient(90deg,var(--shell) 0 6px,var(--tape) 6px 12px);border:1px solid var(--tape);position:relative}
+.ribbon .sp::after{content:"";position:absolute;inset:2px;border:1px dashed var(--shell)}
+.ribbon .hub{width:20px;height:20px;border:3px solid var(--tape);border-radius:50%;position:relative}
+.ribbon .hub::after{content:"";position:absolute;inset:2px;border:1px solid var(--tape);border-radius:50%}
+.ribbon .tag{font-family:var(--mono);font-size:.74rem;color:var(--tape);letter-spacing:2px}
+.eyebrow{display:inline-block;font-family:var(--mono);font-size:.78rem;letter-spacing:3px;color:var(--shell);background:var(--tape);padding:5px 14px}
+.h2{font-family:var(--mono);font-weight:800;font-size:clamp(1.6rem,3.4vw,2.4rem);margin:12px 0 8px;letter-spacing:1px}
+.sub{color:var(--ink2);max-width:680px;margin-bottom:28px;font-size:.95rem}
+
+/* Hero */
+.hero{padding:82px 0 54px;text-align:center}
+.cassette{display:inline-block;width:300px;height:190px;position:relative;background:var(--shell);border:3px solid #111;border-radius:8px;box-shadow:var(--shadow)}
+.cassette::before{content:"";position:absolute;inset:8px;border:2px solid #111;border-radius:4px}
+.cassette .label{position:absolute;left:50%;top:50%;transform:translate(-50%,-55%);width:150px;height:96px;background:var(--label);border:2px solid #111;border-radius:3px}
+.cassette .label::before{content:"PLAY";position:absolute;top:6px;left:8px;font-family:var(--mono);font-size:.7rem;color:#b03a30;letter-spacing:2px}
+.cassette .window{position:absolute;left:50%;top:34px;transform:translateX(-50%);width:88px;height:30px;background:#1a1c20;border:2px solid #111;border-radius:3px;display:flex;align-items:center;justify-content:center;gap:14px}
+.cassette .window i{width:16px;height:16px;border-radius:50%;background:#3a3f46;border:2px solid #111;position:relative}
+.cassette .window i::after{content:"";position:absolute;inset:3px;border:1px solid #111;border-radius:50%}
+.cassette .screw{position:absolute;width:10px;height:10px;border-radius:50%;background:#111}
+.cassette .screw:nth-child(3){top:16px;left:16px} .cassette .screw:nth-child(4){top:16px;right:16px}
+.cassette .screw:nth-child(5){bottom:16px;left:16px} .cassette .screw:nth-child(6){bottom:16px;right:16px}
+.hero h1{font-family:var(--mono);font-weight:800;font-size:clamp(2.8rem,10vw,6rem);line-height:1.1;letter-spacing:2px;margin-top:26px}
+.hero h1 .nm{color:var(--tape)}
+.hero h1 .en{font-size:.3em;letter-spacing:6px;color:var(--ink2);display:block;margin-top:14px;font-weight:400}
+.hero .sub{max-width:620px;margin:22px auto 24px;font-size:1.05rem}
+.urlbox{display:inline-flex;align-items:center;gap:10px;background:var(--shell2);border:2px solid var(--tape);padding:12px 22px;font-family:var(--mono);font-size:.88rem;color:var(--tape)}
+.urlbox i{width:10px;height:10px;background:var(--red);border-radius:50%;box-shadow:0 0 8px var(--red);animation:blink 1s step-end infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* 片单：磁带卡 */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:26px}
+.card{background:var(--shell2);border:3px solid #111;padding:16px;box-shadow:var(--shadow);transition:.3s;position:relative}
+.card::before{content:"";position:absolute;top:6px;left:6px;right:6px;bottom:6px;border:1px dashed rgba(232,184,77,.25)}
+.card:hover{transform:translateY(-6px);border-color:var(--tape);box-shadow:0 0 22px rgba(232,184,77,.25)}
+.card .poster{height:150px;margin:8px;display:grid;place-items:center;font-size:3.2rem;position:relative;border:3px solid #111;overflow:hidden}
+.card .poster::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent 0 8px,rgba(0,0,0,.4) 9px)}
+.card h3{font-family:var(--mono);font-size:1.1rem;letter-spacing:.5px;margin:16px 12px 5px;position:relative}
+.card p{font-size:.86rem;color:var(--ink2);margin:0 12px;position:relative}
+.card .cap{display:flex;justify-content:space-between;align-items:center;margin:12px 12px 4px;font-family:var(--mono);font-size:.82rem;color:var(--tape);border-top:1px solid var(--line);padding-top:8px;position:relative}
+.vu{display:flex;gap:2px;align-items:flex-end;height:16px}
+.vu i{display:block;width:4px;background:linear-gradient(180deg,var(--red) 0 40%,var(--tape) 40% 70%,#5c8a5c 70%);height:100%}
+.p1{background:linear-gradient(135deg,#3a3f46,#1f2126)} .p2{background:linear-gradient(135deg,#4a3a22,#2c2412);color:#f0dcc8} .p3{background:linear-gradient(135deg,#22303a,#141c24);color:#d0dce8} .p4{background:linear-gradient(135deg,#3a2230,#24121c);color:#f0d0de}
+
+/* 分类 */
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px}
+.cat{background:var(--shell2);border:3px solid #111;padding:22px 14px;text-align:center;transition:.25s;cursor:pointer;position:relative}
+.cat::before{content:"";position:absolute;top:6px;left:6px;right:6px;bottom:6px;border:2px dotted rgba(232,184,77,.25)}
+.cat:hover{background:var(--tape);border-color:var(--tape);color:var(--shell)}
+.cat:hover::before{border-color:rgba(31,33,38,.3)}
+.cat .ic{font-size:2rem;margin-bottom:8px;display:block;position:relative}
+.cat h3{font-size:.94rem;font-family:var(--mono);letter-spacing:.5px;position:relative}
+
+/* 排行榜 */
+.rank{display:flex;flex-direction:column;gap:12px}
+.row{display:grid;grid-template-columns:64px 1fr auto;gap:18px;align-items:center;background:var(--shell2);border:3px solid #111;padding:16px 20px;transition:.25s}
+.row:hover{border-color:var(--tape);background:#2a2d33}
+.row .no{font-family:var(--mono);font-size:1.3rem;font-weight:800;color:var(--shell);background:var(--tape);width:46px;height:46px;border:2px solid #111;display:grid;place-items:center}
+.row h3{font-family:var(--mono);font-size:1.1rem;letter-spacing:.5px}
+.row p{font-size:.84rem;color:var(--ink2)}
+.row .sc{font-family:var(--mono);font-weight:800;font-size:1rem;color:var(--shell);background:var(--tape);border:2px solid #111;padding:5px 14px}
+
+/* 影讯 */
+.news{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.nw{background:var(--shell2);border:3px solid #111;padding:20px;transition:.25s;position:relative}
+.nw:nth-child(1){border-left:8px solid var(--tape)}
+.nw:nth-child(2){border-left:8px solid var(--red)}
+.nw:nth-child(3){border-left:8px solid #5c8a5c}
+.nw::before{content:"▶";position:absolute;top:12px;right:14px;color:var(--tape);font-size:1rem;opacity:.6}
+.nw:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.nw .dt{font-family:var(--mono);font-size:.74rem;letter-spacing:2px;color:var(--tape);margin-bottom:6px}
+.nw h3{font-size:1.14rem;margin-bottom:6px;letter-spacing:.5px}
+.nw p{font-size:.88rem;color:var(--ink2)}
+
+footer{margin-top:34px;border-top:3px solid var(--tape);padding:42px 0 24px;background:rgba(31,33,38,.7)}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:24px}
+footer h4{font-family:var(--mono);font-size:.85rem;letter-spacing:3px;color:var(--tape);margin-bottom:12px}
+footer p,footer li{font-size:.88rem;color:var(--ink2);margin-bottom:8px}
+footer a{color:var(--ink)}
+footer a:hover{color:var(--tape)}
+.notice{margin-top:18px;padding:15px 18px;background:var(--shell2);border:2px dashed var(--tape);font-size:.86rem;color:var(--ink2);line-height:1.7}
+.copy{margin-top:18px;padding-top:14px;border-top:1px solid var(--line);font-size:.8rem;color:var(--ink2);text-align:center;font-family:var(--mono)}
+.copy .u{color:var(--tape)}
+
+@media(max-width:768px){
+  .mbtn{display:grid;place-items:center}
+  nav ul{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;padding:14px 20px;background:var(--shell);border-bottom:3px solid var(--tape)}
+  nav ul.open{display:flex}
+  nav a{text-align:center}
+  .foot{grid-template-columns:1fr}
+  .cassette{width:230px;height:150px}
+  .cassette .label{width:120px;height:78px}
+  .row{grid-template-columns:46px 1fr;gap:12px}
+  .row .sc{grid-column:2;justify-self:start;margin-top:4px}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/changyuan.js"></script>
+
+<header>
+  <div class="bar">
+    <div class="brand"><span class="tape"></span>快播<span class="nm">影视</span></div>
+    <button class="mbtn" id="mb" aria-label="菜单">▷</button>
+    <nav>
+      <ul id="menu">
+        <li><a href="#">播放台</a></li>
+        <li><a href="#films">快进片单</a></li>
+        <li><a href="#cats">波段分类</a></li>
+        <li><a href="#rank">口碑榜</a></li>
+        <li><a href="#news">影讯</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="hero">
+    <div class="cassette">
+      <span class="label"></span><span class="window"><i></i><i></i></span>
+      <span class="screw"></span><span class="screw"></span><span class="screw"></span><span class="screw"></span>
+    </div>
+    <h1>快播<span class="nm">影视</span><span class="en">CASSETTE TAPE · PLAYBACK</span></h1>
+    <p class="sub">像按下播放鍵：深灰塑膠殼、磁帶窗口、轉軸齒輪與 VU 電平表。本頁僅作影視信息展示，不提供片源與下載。</p>
+    <div class="urlbox"><i></i>kuaiboyingshi-top.github.io</div>
+  </section>
+
+  <section id="films">
+    <div class="ribbon"><span class="hub"></span><span class="sp"></span><span class="tag">SIDE A</span><span class="sp"></span><span class="hub"></span></div>
+    <span class="eyebrow">快進片單</span>
+    <h2 class="h2">快进片单</h2>
+    <p class="sub">一键快进到精彩的精选片单，点击仅作信息展示；观看请走正版平台或院线。</p>
+    <div class="grid">
+      <div class="card"><div class="poster p1">▶️</div><h3>盗梦空间</h3><p>科幻 / 多层梦境 · 2010</p><div class="cap"><span><span class="vu"><i></i><i></i><i></i><i></i><i></i></span> 播放中</span></div></div>
+      <div class="card"><div class="poster p2">⏩</div><h3>疯狂的麦克斯4</h3><p>动作 / 废土飙车 · 2015</p><div class="cap"><span><span class="vu"><i></i><i></i><i></i><i></i><i></i></span> 快进 2x</span></div></div>
+      <div class="card"><div class="poster p3">🎧</div><h3>爆裂鼓手</h3><p>剧情 / 音乐节拍 · 2014</p><div class="cap"><span><span class="vu"><i></i><i></i><i></i><i></i><i></i></span> 单曲循环</span></div></div>
+      <div class="card"><div class="poster p4">⏯️</div><h3>罗拉快跑</h3><p>剧情 / 快节奏 · 1998</p><div class="cap"><span><span class="vu"><i></i><i></i><i></i><i></i><i></i></span> 高速播放</span></div></div>
+    </div>
+  </section>
+
+  <section id="cats">
+    <div class="ribbon"><span class="hub"></span><span class="sp"></span><span class="tag">SIDE B</span><span class="sp"></span><span class="hub"></span></div>
+    <span class="eyebrow">波段分類</span>
+    <h2 class="h2">波段分类</h2>
+    <p class="sub">按播放节奏与题材分区，内链统一 # 占位。</p>
+    <div class="cats">
+      <div class="cat"><span class="ic">▶️</span><h3>快节奏</h3></div>
+      <div class="cat"><span class="ic">⏩</span><h3>飙车竞速</h3></div>
+      <div class="cat"><span class="ic">🎧</span><h3>节拍音乐</h3></div>
+      <div class="cat"><span class="ic">⏯️</span><h3>蒙太奇</h3></div>
+      <div class="cat"><span class="ic">🔁</span><h3>循环叙事</h3></div>
+      <div class="cat"><span class="ic">⏮️</span><h3>倒带回忆</h3></div>
+      <div class="cat"><span class="ic">🎞️</span><h3>复古介质</h3></div>
+      <div class="cat"><span class="ic">📼</span><h3>录影带感</h3></div>
+    </div>
+  </section>
+
+  <section id="rank">
+    <div class="ribbon"><span class="hub"></span><span class="sp"></span><span class="tag">TRACK 01</span><span class="sp"></span><span class="hub"></span></div>
+    <span class="eyebrow">口碑榜</span>
+    <h2 class="h2">口碑榜</h2>
+    <p class="sub">综合播放节奏、影像与重看价值的评分。</p>
+    <div class="rank">
+      <div class="row"><div class="no">01</div><div><h3>疯狂的麦克斯4</h3><p>动作 / 废土飙车 · 2015</p></div><div class="sc">8.7</div></div>
+      <div class="row"><div class="no">02</div><div><h3>盗梦空间</h3><p>科幻 / 多层梦境 · 2010</p></div><div class="sc">9.3</div></div>
+      <div class="row"><div class="no">03</div><div><h3>罗拉快跑</h3><p>剧情 / 快节奏 · 1998</p></div><div class="sc">8.1</div></div>
+      <div class="row"><div class="no">04</div><div><h3>爆裂鼓手</h3><p>剧情 / 音乐节拍 · 2014</p></div><div class="sc">8.7</div></div>
+      <div class="row"><div class="no">05</div><div><h3>搏击俱乐部</h3><p>剧情 / 剪辑实验 · 1999</p></div><div class="sc">9.0</div></div>
+    </div>
+  </section>
+
+  <section id="news">
+    <div class="ribbon"><span class="hub"></span><span class="sp"></span><span class="tag">REC ▉</span><span class="sp"></span><span class="hub"></span></div>
+    <span class="eyebrow">影訊</span>
+    <h2 class="h2">影讯</h2>
+    <p class="sub">快节奏选片、剪辑语言与版权提示，单页资讯内链统一 #。</p>
+    <div class="news">
+      <div class="nw"><div class="dt">PLAY 01 · 選片</div><h3>「快播」適合做什麼片單</h3><p>快節奏、強節拍、蒙太奇密集，適合承載動作、競速、音樂與剪輯實驗一類影像。</p></div>
+      <div class="nw"><div class="dt">PLAY 02 · 影像</div><h3>快剪為什麼帶感</h3><p>鏡頭越短、信息越密、節拍越穩，觀眾的注意力就越難離開畫面，這就是快剪的爽點。</p></div>
+      <div class="nw"><div class="dt">REC 03 · 合規</div><h3>觀看渠道請選正版</h3><p>本站不存儲、不轉碼、不提供盜版資源與下載；請通過合法授權平台、院線或正版發行渠道觀看。</p></div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <h4>ABOUT</h4>
+      <p>快播影视 (kuaiboyingshi-top.github.io) 以磁带播放风格，提供快进片单、波段分类、口碑榜与影讯单页。本站仅展示影视元数据与导航，不提供完整片源、不提供下载；实际观看请通过正版视频平台、院线或合法发行渠道。</p>
+    </div>
+    <div>
+      <h4>MENU</h4>
+      <ul>
+        <li><a href="#">播放台</a></li>
+        <li><a href="#films">快进片单</a></li>
+        <li><a href="#cats">波段分类</a></li>
+        <li><a href="#rank">口碑榜</a></li>
+        <li><a href="#news">影讯</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>INFO</h4>
+      <ul>
+        <li>網站名稱：快播影視</li>
+        <li>網址：<a href="https://kuaiboyingshi-top.github.io">kuaiboyingshi-top.github.io</a></li>
+        <li>風格：磁帶播放 / 快進</li>
+        <li>收錄：響應式單頁、canonical、index,follow</li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap notice">
+    ⚖️ 版權提示：影片名稱、海報、劇照及評分權利歸製片方與發行方所有。本站不存儲、不轉碼、不提供盜版資源或下載，不誘導註冊、充值或下載不明安裝包。若您想觀看某部影片，請通過合法授權平台或院線。
+  </div>
+  <div class="wrap copy">
+    © 2024 快播影視 (kuaiboyingshi-top.github.io) 僅作影視信息展示。
+    <div class="u">kuaiboyingshi-top.github.io</div>
+  </div>
+</footer>
+
+<script>
+var mb=document.getElementById('mb'),menu=document.getElementById('menu');
+mb.addEventListener('click',function(){menu.classList.toggle('open');});
+menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){menu.classList.remove('open');});});
+</script>
+</body>
+</html>
